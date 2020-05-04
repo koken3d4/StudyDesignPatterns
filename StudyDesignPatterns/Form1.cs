@@ -32,5 +32,12 @@ namespace StudyDesignPatterns
                 Debug.Print(book.Name);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            IPrint P = new PrintBanner("hello");
+            P.PrintWeak();
+            P.PrintStrong();
+        }
     }
 }
