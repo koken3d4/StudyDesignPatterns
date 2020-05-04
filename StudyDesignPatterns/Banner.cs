@@ -29,13 +29,13 @@ namespace StudyDesignPatterns
         void PrintWeak();
         void PrintStrong();
     }
-    //このクラスは抽象化クラスにする必要がある。
+
+    //このクラスは抽象クラスにする必要がある。
     //そうしないと本にあるように、Printクラスを使用できないので注意。
     public abstract class Print
     {
         public abstract void PrintWeak();
-        public abstract void PrintStrong();
-    
+        public abstract void PrintStrong();    
     }
 
     public class PrintBanner : Banner, IPrint
@@ -58,14 +58,19 @@ namespace StudyDesignPatterns
     public class PrintBannerInheritance:Print
     {
         private Banner banner;
+
         public PrintBannerInheritance(string str)
         {
             this.banner = new Banner(str);
         }
         public  override void PrintWeak()
-        { banner.ShowWithParen(); }
+        {
+            banner.ShowWithParen(); 
+        }
 
         public override void PrintStrong()
-        { banner.ShowWithAster(); }
+        { 
+            banner.ShowWithAster(); 
+        }
     }
 }
