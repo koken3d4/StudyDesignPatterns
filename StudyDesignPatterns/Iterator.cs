@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace StudyDesignPatterns
 {
-    class Iterator
+    public interface Iterator
     {
+        bool hasNext { get; }
+        Object next { get; }
     }
-
-     interface IIterator
-    {
-        bool hasNext { get; set; }
-        Object next { get; set; }
-    }
-    interface Aggregate
+    interface Aggregate  //aggregateは集計するという意味
     {
         Iterator iterator();
     }
@@ -39,11 +35,14 @@ namespace StudyDesignPatterns
         public BookShelf(int maxsize)
         {
             this.books = new Book[maxsize];
-            
+
         }
         public Book getBookAt(int index)
-        { return Book[index]; }
-
+        { return books[index]; }
+        /// <summary>
+        /// appendBookをすることで、配列の最初からブックを追加していく。
+        /// </summary>
+        /// <param name="book"></param>
         public void appendBook(Book book)
         {
             this.books[last] = book;
@@ -54,11 +53,11 @@ namespace StudyDesignPatterns
         { return last; }
 
         public Iterator iterator()
-        { return new BookshelfIterator(this); }
+        { return new BookShelfIterator(this); }
     }
 
 
-    public class BookShelfIterator : IIterator
+    public class BookShelfIterator : Iterator
     {
         private BookShelf bookshelf;
         private int index;
@@ -67,17 +66,24 @@ namespace StudyDesignPatterns
             this.bookshelf = bookshelf;
             this.index = 0;
         }
-        public bool IIterator.hasNext
+        bool Iterator.hasNext
         {
-            if (index < bookshelf.getLength())
-                return true;
-            else
-                return false;
+            get
+            {
+                if (index < bookshelf.getLength())
+                    return true;
+                else
+                    return false;
+            }
         }
-        public object IIterator.next()
+        object Iterator.next
         {
-            Book book = bookshelf.getBookAt(index);
-            index++;
-            return book;
+            get
+            {
+                Book book = bookshelf.getBookAt(index);
+                index++;
+                return book;
+            }
         }
+    }
 }
