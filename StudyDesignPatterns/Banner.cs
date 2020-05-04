@@ -29,7 +29,8 @@ namespace StudyDesignPatterns
         void PrintWeak();
         void PrintStrong();
     }
-
+    //このクラスは抽象化クラスにする必要がある。
+    //そうしないと本にあるように、Printクラスを使用できないので注意。
     public abstract class Print
     {
         public abstract void PrintWeak();

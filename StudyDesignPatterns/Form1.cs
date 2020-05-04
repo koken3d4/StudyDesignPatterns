@@ -39,7 +39,7 @@ namespace StudyDesignPatterns
             IP.PrintWeak();
             IP.PrintStrong();
 
-            Print P = new PrintBannerInheritance("test");
+            Print P = new PrintBannerInheritance("test");//　Printクラスだけど、PrintBannerInheritanceクラスでインスタンスしていることに注意。中小クラスだからこれができる。普通のクラスの警鐘だとこれはできないので注意すること。
             P.PrintWeak();
             P.PrintStrong();
         }
