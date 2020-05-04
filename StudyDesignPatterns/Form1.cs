@@ -35,7 +35,11 @@ namespace StudyDesignPatterns
 
         private void button2_Click(object sender, EventArgs e)
         {
-            IPrint P = new PrintBanner("hello");
+            IPrint IP = new PrintBanner("hello");
+            IP.PrintWeak();
+            IP.PrintStrong();
+
+            Print P = new PrintBannerInheritance("test");
             P.PrintWeak();
             P.PrintStrong();
         }

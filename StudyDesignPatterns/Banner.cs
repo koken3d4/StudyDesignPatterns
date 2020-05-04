@@ -30,6 +30,13 @@ namespace StudyDesignPatterns
         void PrintStrong();
     }
 
+    public abstract class Print
+    {
+        public abstract void PrintWeak();
+        public abstract void PrintStrong();
+    
+    }
+
     public class PrintBanner : Banner, IPrint
     {
         public PrintBanner(string str) : base(str)//baseキーワードの使い方をさっぱり忘れていたので要注意。
@@ -45,5 +52,19 @@ namespace StudyDesignPatterns
         {
             ShowWithAster();//継承元から呼び出している。
         }
+    }
+
+    public class PrintBannerInheritance:Print
+    {
+        private Banner banner;
+        public PrintBannerInheritance(string str)
+        {
+            this.banner = new Banner(str);
+        }
+        public  override void PrintWeak()
+        { banner.ShowWithParen(); }
+
+        public override void PrintStrong()
+        { banner.ShowWithAster(); }
     }
 }
