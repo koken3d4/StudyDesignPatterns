@@ -43,5 +43,16 @@ namespace StudyDesignPatterns
             P.PrintWeak();
             P.PrintStrong();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AbstractDisplay d1 = new CharDiplay('H');
+            AbstractDisplay d2 = new StringDisplay("Hello,World");
+            AbstractDisplay d3 = new StringDisplay("ｔｔｔｔ");
+
+            d1.Display();
+            d2.Display();
+            d3.Display();
+        }
     }
 }
