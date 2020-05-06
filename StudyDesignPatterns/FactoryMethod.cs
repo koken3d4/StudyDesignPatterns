@@ -56,7 +56,7 @@ namespace idcard
         }
         protected override void registerProduct(Product product)
         {
-            Owners.Add((IDcard)product.getOwner());
+            //Owners.Add((IDcard)product.getOwner());
         }
 
         public List<string> getOwners()

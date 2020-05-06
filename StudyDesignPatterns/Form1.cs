@@ -54,5 +54,16 @@ namespace StudyDesignPatterns
             d2.Display();
             d3.Display();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Singleton obj1 = Singleton.getInstance();
+            Singleton obj2 = Singleton.getInstance();
+            if (obj1 == obj2)
+                Debug.Print("1と2は同じです");
+            else 
+                Debug.Print("1と2は同じインスタンスではありません");
+
+        }
     }
 }
