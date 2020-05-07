@@ -65,5 +65,24 @@ namespace StudyDesignPatterns
                 Debug.Print("1と2は同じインスタンスではありません");
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Manager manager = new Manager();
+            UnderlinePen upen = new UnderlinePen('~');
+            MessageBox mbox = new MessageBox('*');
+            MessageBox sbox = new MessageBox('Z');
+            manager.register("strong massage", upen);
+            manager.register("warning box", mbox);
+            manager.register("slash box", sbox);
+
+            //生成
+            Product p1 = manager.Create("strong massage");
+            p1.use("hello world");
+            Product p2 = manager.Create("warning box");
+            p2.use("hello world");
+            Product p3 = manager.Create("slash box");
+            p3.use("hello world");
+        }
     }
 }
