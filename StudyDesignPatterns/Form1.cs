@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -83,6 +84,28 @@ namespace StudyDesignPatterns
             p2.use("hello world");
             Product p3 = manager.Create("slash box");
             p3.use("hello world");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //plane textでの出力
+            TextBuilder textbuilder = new TextBuilder();
+            Director director = new Director(textbuilder);
+            director.construct();
+            string result = textbuilder.getResult();
+            Debug.Print(result);
+
+            //htmlでの出力
+            HTMLBuilder htmlbuilder = new HTMLBuilder();
+            Director director2 = new Director(htmlbuilder);
+            director2.construct();
+            string filename = htmlbuilder.getResult();
+            Debug.Print(filename + "が作成されました");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
