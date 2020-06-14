@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,6 +54,58 @@ namespace StudyDesignPatterns
             d1.Display();
             d2.Display();
             d3.Display();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Singleton obj1 = Singleton.getInstance();
+            Singleton obj2 = Singleton.getInstance();
+            if (obj1 == obj2)
+                Debug.Print("1と2は同じです");
+            else 
+                Debug.Print("1と2は同じインスタンスではありません");
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Manager manager = new Manager();
+            UnderlinePen upen = new UnderlinePen('~');
+            MessageBox mbox = new MessageBox('*');
+            MessageBox sbox = new MessageBox('Z');
+            manager.register("strong massage", upen);
+            manager.register("warning box", mbox);
+            manager.register("slash box", sbox);
+
+            //生成
+            Product p1 = manager.Create("strong massage");
+            p1.use("hello world");
+            Product p2 = manager.Create("warning box");
+            p2.use("hello world");
+            Product p3 = manager.Create("slash box");
+            p3.use("hello world");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //plane textでの出力
+            TextBuilder textbuilder = new TextBuilder();
+            Director director = new Director(textbuilder);
+            director.construct();
+            string result = textbuilder.getResult();
+            Debug.Print(result);
+
+            //htmlでの出力
+            HTMLBuilder htmlbuilder = new HTMLBuilder();
+            Director director2 = new Director(htmlbuilder);
+            director2.construct();
+            string filename = htmlbuilder.getResult();
+            Debug.Print(filename + "が作成されました");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
