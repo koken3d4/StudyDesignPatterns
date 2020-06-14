@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banner.cs" />
+    <Compile Include="FactoryMethod.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
