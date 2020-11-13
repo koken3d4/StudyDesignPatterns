@@ -105,6 +105,17 @@ namespace StudyDesignPatterns
 
         private void button9_Click(object sender, EventArgs e)
         {
+            Display d1 = new Display(new StringDisplayImpl("Hello Japan."));
+            Display d2 = new Display(new StringDisplayImpl("Hello World."));
+            CountDisplay d3 = new CountDisplay(new StringDisplayImpl("Hello Universe."));
+            d1.display();
+            d2.display();
+            d3.display();
+            d3.multiDisplay(2);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
 
         }
     }
