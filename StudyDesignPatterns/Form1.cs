@@ -103,6 +103,11 @@ namespace StudyDesignPatterns
             Debug.Print(filename + "が作成されました");
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void button9_Click(object sender, EventArgs e)
         {
             Display d1 = new Display(new StringDisplayImpl("Hello Japan."));
@@ -114,9 +119,6 @@ namespace StudyDesignPatterns
             d3.multiDisplay(2);
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace StudyDesignPatterns
 {
+    /// <summary>
+    /// CH9で出てくるパターン
+    /// 機能のクラス階層と、実装のクラス階層を分ける事でそれぞれのクラスを独立して拡張出来るようにしている。
+    /// </summary>
     class Bridge
     {
     }
@@ -16,30 +20,35 @@ namespace StudyDesignPatterns
         private DisplayImpl impl;
         public Display(DisplayImpl impl)
         {
+            // DisplayImplクラスをプライベート変数として持つ事で、処理を委譲させている。
             this.impl = impl;
         }
 
-        public void open()
+        public void Open()
         { impl.rawOpen(); }
 
-        public void print()
+        public void Print()
         {
             impl.rawPrint();
         }
 
-        public void close()
+        public void Close()
         {
             impl.rawClose();
         }
 
         public  void display()
         {
-            open();
-            print();
-            close();
+            Open();
+            Print();
+            Close();
         }
     }
 
+    /// <summary>
+    /// 新しいメソッドを追加している。
+    /// ここまでが機能のクラス階層となる。
+    /// </summary>
     public class CountDisplay : Display
     {
         public CountDisplay(DisplayImpl impl) : base(impl)
@@ -48,14 +57,18 @@ namespace StudyDesignPatterns
 
         public void multiDisplay(int times)
         {
-            open();
+            Open();
             for (int i = 0; i < times; i++)
-                print();
+                Print();
 
-            close();
+            Close();
         }
     }
 
+    /// <summary>
+    /// 実装のクラス階層
+    /// DisplayImplは抽象クラス
+    /// </summary>
     public abstract class DisplayImpl
     {
         public abstract void rawClose();
@@ -73,14 +86,14 @@ namespace StudyDesignPatterns
             this.width = str.Length;
         }
 
-        public override void rawOpen()
+        public override void rawOpen()  //rawOpenは抽象メソッドなのでoverrideキーワードが必要
         {
             printLine();
         }
 
         public override void rawPrint()
         {
-            Debug.Print("|" + str + "|");
+            Debug.Print("|" + str + "|");  //前後に｜をつけて表現する。
         }
 
         public override void rawClose()
