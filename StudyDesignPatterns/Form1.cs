@@ -119,6 +119,10 @@ namespace StudyDesignPatterns
             d3.multiDisplay(2);
         }
 
-
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Strategy_CH10.StrategyManager manager = new Strategy_CH10.StrategyManager();
+            manager.StartGame();
+        }
     }
 }
